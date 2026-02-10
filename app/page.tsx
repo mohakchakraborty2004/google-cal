@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import { useRouter } from 'next/navigation'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
@@ -125,6 +126,7 @@ export default function CalendarPage() {
   const [isBooking, setIsBooking] = useState(false)
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
   const calendarRef = useRef<FullCalendar>(null)
+  const router = useRouter()
 
   const fetchEvents = async (start?: string, end?: string) => {
     try {
@@ -211,8 +213,14 @@ export default function CalendarPage() {
             </div>
             <h1 className="text-xl font-semibold text-gray-900">Calendar Demo</h1>
           </div>
-          <div className="text-sm text-gray-500">
-            Click on a time slot to book an appointment
+          <div className="flex items-center gap-4">
+            <div className="text-sm text-gray-500">Click on a time slot to book an appointment</div>
+            <button
+              onClick={() => router.push('/policy')}
+              className="px-3 py-2 bg-slate-900 text-white rounded-lg text-sm hover:bg-slate-800"
+            >
+              View Policies
+            </button>
           </div>
         </div>
       </header>
