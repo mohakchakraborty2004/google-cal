@@ -58,7 +58,7 @@ interface PopulatedAppointment {
   providerDetails?: Provider;
 }
 
-const API_BASE = 'http://localhost:3001/api';
+const API_BASE = 'https://policy-demo-backend.onrender.com/api';
 
 export default function CommandCenterDashboard() {
   const [providers, setProviders] = useState<Provider[]>([]);
